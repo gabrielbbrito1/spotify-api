@@ -9,11 +9,6 @@ function App() {
   const [inputAlbum, setInputAlbum] = useState('')
   const [albumsList, setAlbumsList] = useState('')
 
-  const data =[
-    {value: 1, name: 'a'},
-    {value: 2, name: 'b'},
-    {value: 3, name: 'c'},
-  ]
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -34,7 +29,7 @@ function App() {
   useEffect(() => {
     const fetchAlbums = async () => {
       console.log(token)
-      const albumsResponse = await axios(`https://api.spotify.com/v1/search?q=${inputAlbum}&type=album`, {
+      const albumsResponse = await axios(`https://api.spotify.com/v1/search?q=${inputAlbum}&type=album&limit=10`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + token}
       })
@@ -51,6 +46,8 @@ function App() {
       <div>
       <input value={inputAlbum} onChange={(e) => setInputAlbum(e.target.value)}/>
       {albumsList && albumsList.map(album => (<div className={album}>
+        <img src = {album.images[1].url}></img>
+        <br/>
         <strong>{album.name}</strong>
         <div>Data de lançamento: {album.release_date}</div>
         <div>Número de músicas: {album.total_tracks}</div>
