@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import Dropdown from './components/Dropdown'
 import { Credentials } from './components/Credentials'
 import axios from 'axios'
+import './app.css'
 
 function App() {
   const spotify = Credentials();
   const [token, setToken] = useState('');
-  const [genres, setGenres] = useState('')
+  const [inputAlbum, setInputAlbum] = useState('')
+  const [albumsList, setAlbumsList] = useState('')
 
   const data =[
     {value: 1, name: 'a'},
@@ -15,42 +16,45 @@ function App() {
   ]
 
   useEffect(() => {
-
-    axios('https://accounts.spotify.com/api/token', {
-      headers: {
-        'Content-Type' : 'application/x-www-form-urlencoded',
-        'Authorization' : 'Basic ' + btoa(spotify.ClientId + ':' + spotify.ClientSecret)      
-      },
-      data: 'grant_type=client_credentials',
-      method: 'POST'
-    })
-    .then(tokenResponse => {      
-      setToken(tokenResponse.data.access_token);
-
-      axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
-        method: 'GET',
-        headers: { 'Authorization' : 'Bearer ' + tokenResponse.data.access_token}
+    const fetchToken = async () => {
+      const tokenResponse = await axios('https://accounts.spotify.com/api/token', {
+        headers: {
+          'Content-Type' : 'application/x-www-form-urlencoded',
+          'Authorization' : 'Basic ' + btoa(spotify.ClientId + ':' + spotify.ClientSecret)      
+        },
+        data: 'grant_type=client_credentials',
+        method: 'POST'
       })
-      .then (genreResponse => {        
-        setGenres({
-          selectedGenre: genres.selectedGenre,
-          listOfGenresFromAPI: genreResponse.data.categories.items
-        })
-      });
-      
-    });
+      setToken(tokenResponse.data.access_token);
+    }
 
-  }, [genres.selectedGenre, spotify.ClientId, spotify.ClientSecret]); 
+    fetchToken()
+  },  [])
 
+  useEffect(() => {
+    const fetchAlbums = async () => {
+      console.log(token)
+      const albumsResponse = await axios(`https://api.spotify.com/v1/search?q=${inputAlbum}&type=album`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token}
+      })
+
+      setAlbumsList(albumsResponse.data.albums.items)
+      console.log(albumsList)
+    }
+
+    fetchAlbums()
+  }, [token, inputAlbum])
 
   return (
     <form onSubmit = {() => {}}>
-      <div className="container">
-      <Dropdown options={data} />
-      <Dropdown options={data} />
-      <button type = 'submit'>
-      Search
-      </button>
+      <div>
+      <input value={inputAlbum} onChange={(e) => setInputAlbum(e.target.value)}/>
+      {albumsList && albumsList.map(album => (<div className={album}>
+        <strong>{album.name}</strong>
+        <div>Data de lançamento: {album.release_date}</div>
+        <div>Número de músicas: {album.total_tracks}</div>
+      </div>))}
       </div>
     </form>
    
