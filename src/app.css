@@ -1,3 +1,53 @@
 .album {
-  margin: 20px 0
+  margin-left: auto;
+  margin-right: auto;
+}
+.logoImg{
+  display: block;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+
+}
+.albumInput{
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 25px;
+width: 15%;
+height: 25px;
+text-align: center;
+min-width: 200px;
+}
+.caixaItem{
+  display: flex;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(34, 33, 33);
+  width: 70%;
+  min-width: 780px;
+}
+.infoText{
+  color: white;
+  margin-top: 20px;
+  margin-left: 10px;
+  text-shadow: 2px 2px #494848;
+}
+.makeColumn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+body{
+  background-color: black;
+}
+b{
+  margin-right: 5px;
+}
+a{
+  text-decoration: none;
+  color: white
 }
