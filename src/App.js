@@ -48,13 +48,12 @@ function App() {
     <form onSubmit = {() => {}}>
       <div>
         <img src={spotifyLogo} className="logoImg" alt = "logo spotify"></img>
-        <h1 style ={{textAlign : "center", fontFamily : "sans-serif", color : "#1ED760"}}>SpotifyApi</h1>
+        <h1 style ={{textAlign : "center", fontFamily : "sans-serif", color : "#1ED760"}}>Almostify</h1>
         <input value={inputAlbum} className="albumInput" onChange={(e) => setInputAlbum(e.target.value)} placeholder="Digite o nome do album ou artista"/>
         {albumsList && albumsList.map(album => (
         <div className={album}>
           <div className = "caixaItem"> 
             <img src = {album.images[1].url}></img>
-            <br/>
             <div className = "makeColumn">
               <div className = "infoText"><b>Artista:</b> {album.artists[0].name} </div>
               <div className = "infoText"><b> Nome do album:</b> {album.name}</div>
@@ -64,7 +63,6 @@ function App() {
             </div>
           </div> 
         </div>))}
-
       </div>
     </form>
    
