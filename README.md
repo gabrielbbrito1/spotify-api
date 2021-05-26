@@ -2,7 +2,7 @@
 <p>Hands On! Horizon</p>
 <p>Navegando na biblioteca do spotify utilizando a sua api.</p>
 
-# Instruções de instalação dos pacotes:
+## Instruções de instalação dos pacotes:
 Abra o terminal na pasta do aplicativo e digite:
 ```bash
 npm install
