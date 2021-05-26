@@ -41,7 +41,64 @@ font-weight: bold;
   flex-direction: column;
   justify-content: center;
 }
+.tracksButton {
+  background-color: #1ED760;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  width: 100px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
 
+.track {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  padding: 10px;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(34, 33, 33);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
+}
+
+
+.trackField {
+  display: flex;
+  align-items: center;
+  color: #1ED760;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(34, 33, 33);
+  width: 10%;
+  min-width: 480px;
+  justify-content: center;
+  font-weight: bold;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.expandButton {
+  cursor: pointer;
+  margin-left: 10px;
+  background-color:   #1ED760;
+  border-radius: 5px;
+  color: #000;
+}
+.buttonTrack{
+  color: #000;
+  border-radius: 10px;
+}
+
+.tracksButton{
+  font-weight: bold;
+}
 body{
   background-color: rgb(10, 10, 10);
 }
