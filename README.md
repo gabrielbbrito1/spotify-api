@@ -1,5 +1,5 @@
 # Almostify
-<p>Hands On! Horizon</p>
+<p>Hands On! Horizon desafio utilizando spotify web api</p>
 <p>Navegando na biblioteca do spotify utilizando a spotify web api.</p>
 
 ## Instruções de instalação dos pacotes:
